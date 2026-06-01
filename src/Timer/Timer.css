@@ -1,0 +1,47 @@
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.time_Input,
+.PorM_Button {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+#timer_Box{ /*전체 */
+    display: flex;
+    gap: 10px;
+}
+.time_Box{ /*인풋, 버튼*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+}
+
+.time_Input{
+    height: 100px;
+    width: 80px;
+    
+    border: none;
+
+    text-align: center;
+    font-size: 3rem;
+}
+.PorM_Button{
+    height: 40px;
+    width: 80px;
+
+    border: none;
+
+    text-align: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.colon{
+    font-size: 6rem;
+    margin-top: 45px;
+}

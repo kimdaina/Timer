@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "barbie";
+  src: url("../fonts/barbie.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "bartex";
+  src: url("../fonts/bartex.ttf") format("truetype");
+}
+
+.time_Input{
+  font-family: "barbie", sans-serif;
+}

@@ -1,17 +1,26 @@
-input::-webkit-inner-spin-button,
+input::-webkit-inner-spin-button, /*브라우저 마자 다른거 방지 */
 input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.time_Input,
-.PorM_Button {
-  appearance: none;
-  -webkit-appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-#timer_Box{ /*전체 */
+.time_Input,
+.adjust_Button {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.Hidden_Button{
+    visibility: hidden;
+}
+
+#All_timeBox{
+    width: 400px;
+    height:200px;
+
     display: flex;
     gap: 10px;
+
 }
 .time_Box{ /*인풋, 버튼*/
     display: flex;
@@ -21,7 +30,7 @@ input::-webkit-outer-spin-button {
     gap:10px;
 }
 
-.time_Input{
+.time_Input{ /* 인풋 */
     height: 100px;
     width: 80px;
     
@@ -30,7 +39,7 @@ input::-webkit-outer-spin-button {
     text-align: center;
     font-size: 3rem;
 }
-.PorM_Button{
+.adjust_Button{ /* +,- 버튼 */
     height: 40px;
     width: 80px;
 
@@ -41,7 +50,21 @@ input::-webkit-outer-spin-button {
     font-size: 2rem;
 }
 
+#timer_button{
+    width: 350px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
 .colon{
     font-size: 6rem;
     margin-top: 45px;
 }
+
+

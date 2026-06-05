@@ -1,8 +1,12 @@
 import { useState,useEffect } from "react";
-import './Timer.css'
+import './Timer.css' ; {/*공통으로 들어가야할 테마 */}
+
 import '../assets/style/Barbie.css'
 
-function Timer(){
+function Timer({ theme }: { theme: string }){
+    // const [theme] = useState(Theme_name()); //이건 리액트가 따로 기억하도록 도와주는 값, 렌더링돼도 유지하고 싶은 값은 useState에 넣는다. 걍 App에서 받음
+    //const theme = Theme_name 이렇게만하면 렌더링이 될때 마다(버튼을 누를때마다) 테마를 새로 갱신해서 사용하면 안됨
+    
     const [hours,set_hours]=useState('00');
     const [minutes,set_minutes]=useState('00');
     const [seconds,set_seconds]=useState('00');
@@ -32,7 +36,7 @@ function Timer(){
 
     function start(){ {/*시작버튼 누르면 1초싹 감소 시작 */}
         let total_num =hours_num*3600+minutes_num*60+seconds_num
-        if (total_num!==0){
+        if (total_num!==0){ {/*0이 아닐때만 실행*/}
             set_totalTime(total_num);
             set_started(true);
         }
@@ -71,35 +75,63 @@ function Timer(){
             return () => clearInterval(timer);
         }, [started]);
     
+    function pause(){
+        set_started(false);
+    }
     
 
     return(
-        <div id="timer_Box">
-           
-            <div className="time_Box"> {/*시*/}
-                <button className="PorM_Button" onClick={()=>set_hours(plus(hours_num))} disabled={started}>+</button>
-                <input className="time_Input" type="number" min={0} value={hours} disabled={started} onChange={(e)=>(set_hours(String(Number(e.target.value || 0)).padStart(2, "0")))}/>
-                {/* onChange랑 value가 있어야지 사용자가 입력한 값을 state에 반영하고, 그 state가 다시 화면에 보인다, value만 있으면 타이핑은 힘들다 */}
-                <button className="PorM_Button" onClick={()=>set_hours(minus(hours_num))} disabled={started}>-</button>
+        <div id="timer_Box" className={theme} >
+            <div id = "All_timeBox">
+                
+                <div className="time_Box"> {/*시*/}
+                    <button className={!started?"adjust_Button":"Hidden_Button"} onClick={()=>set_hours(plus(hours_num))} disabled={started}>+</button>
+                    <input className="time_Input" type="number" min={0} value={hours} disabled={started} onChange={(e)=>(set_hours(String(Number(e.target.value || 0)).padStart(2, "0")))}/>
+                    {/* onChange랑 value가 있어야지 사용자가 입력한 값을 state에 반영하고, 그 state가 다시 화면에 보인다, value만 있으면 타이핑은 힘들다 */}
+                    <button className={!started?"adjust_Button":"Hidden_Button"} onClick={()=>set_hours(minus(hours_num))} disabled={started}>-</button>
+                </div>
+                
+                <span className="colon">:</span>
+                
+                <div className="time_Box"> {/*분*/}
+                    <button className={!started?"adjust_Button":"Hidden_Button"} onClick={()=>minutes_num+1<60?set_minutes(plus(minutes_num)):minutes} disabled={started}>+</button>
+                    <input className="time_Input" type="number" value={minutes} disabled={started} max={59} onChange={(e)=>(set_minutes(String(Number(e.target.value || 0)).padStart(2, "0")))}/>
+                    <button className={!started?"adjust_Button":"Hidden_Button"} onClick={()=>set_minutes(minus(minutes_num))} disabled={started}>-</button>
+                </div>
+                
+                <span className="colon">:</span>
+                
+                <div className="time_Box"> {/*초*/}
+                    <button className={!started?"adjust_Button":"Hidden_Button"} onClick={()=>seconds_num+1<60?set_seconds(plus(seconds_num)):seconds_num} disabled={started}>+</button>
+                    <input className="time_Input" type="number" value={seconds} disabled={started} max={59} onChange={(e)=>(set_seconds(String(Number(e.target.value || 0)).padStart(2, "0")))}/>
+                    <button className={!started?"adjust_Button":"Hidden_Button"} onClick={()=>set_seconds(minus(seconds_num))} disabled={started}>-</button>
+                
+                </div>
             </div>
-            <span className="colon">:</span>
-            <div className="time_Box"> {/*분*/}
-                <button className="PorM_Button" onClick={()=>minutes_num+1<60?set_minutes(plus(minutes_num)):minutes} disabled={started}>+</button>
-                <input className="time_Input" type="number" value={minutes} disabled={started} max={59} onChange={(e)=>(set_minutes(String(Number(e.target.value || 0)).padStart(2, "0")))}/>
-                <button className="PorM_Button" onClick={()=>set_minutes(minus(minutes_num))} disabled={started}>-</button>
-            </div>
-            <span className="colon">:</span>
-            <div className="time_Box"> {/*초*/}
-                <button className="PorM_Button" onClick={()=>seconds_num+1<60?set_seconds(plus(seconds_num)):seconds_num} disabled={started}>+</button>
-                <input className="time_Input" type="number" value={seconds} disabled={started} max={59} onChange={(e)=>(set_seconds(String(Number(e.target.value || 0)).padStart(2, "0")))}/>
-                <button className="PorM_Button" onClick={()=>set_seconds(minus(seconds_num))} disabled={started}>-</button>
-            </div>
-            
-            <div id="timer_button">
-                <button onClick={()=>reset()}>reset</button>
-                <button onClick={()=>start()}>start</button>
-            </div>
-            
+                <div id="timer_button">
+                    <button className="type_Button sparkle_Button" onClick={()=>started?pause():start()}>
+                        {started ? "pause" : "start"}
+                        {theme === "theme_barbie" && (
+                            <>
+                                <span className="star star-1">★</span>
+                                <span className="star star-2">★</span>
+                                <span className="star star-3">★</span>
+                                <span className="star star-4">✦</span>
+                            </>
+                        )}
+                    </button>
+                    <button className="type_Button sparkle_Button" onClick={() => reset()}>
+                        reset
+                        {theme === "theme_barbie" && (
+                            <>
+                                <span className="star star-1">★</span>
+                                <span className="star star-2">★</span>
+                                <span className="star star-3">★</span>
+                                <span className="star star-4">✦</span>
+                            </>
+                        )}
+                    </button>
+                </div>    
         </div>
     )
 }

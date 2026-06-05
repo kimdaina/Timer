@@ -8,6 +8,126 @@
   src: url("../fonts/bartex.ttf") format("truetype");
 }
 
-.time_Input{
+.theme_barbie #logo{
+  width: 80px;
+  margin: 10px;
+}
+
+
+
+
+
+
+/*-------------- Timer ---------------------*/
+.theme_barbie .time_Input,
+.theme_barbie button{
   font-family: "barbie", sans-serif;
+}
+
+.theme_barbie .type_Button{ /* 버튼 클릭했을때*/
+  width: 80px;
+  height: 50px;
+
+  text-align: center;
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+
+}
+
+.theme_barbie .time_Input { /* input 박스 */
+  color: #E305AD;
+  box-sizing: border-box;
+  background-color: rgb(250, 255, 255);
+}
+
+.theme_barbie .time_Input:focus { /* input 박스 클릭했을때*/
+  outline: none;
+  border: 3px solid #ff3c9f;
+}
+
+.theme_barbie .colon { /* 콜론*/
+  color: #ff3c9f;
+}
+
+.theme_barbie .adjust_Button{ /* +,- 버튼*/
+  border-radius: 5px;
+
+  background-color: #ff3c9f;
+  color: whitesmoke;
+
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.theme_barbie .type_Button{
+  border: none;
+  border-radius: 5px;
+
+  background-color: #ff3c9f;
+  color: whitesmoke;
+}
+
+
+
+.theme_barbie .sparkle_Button { /* 버튼 hover했을때 반짝거리는거 */
+  position: relative;
+  overflow: visible;
+}
+
+.theme_barbie .star {
+  position: absolute;
+  opacity: 0;
+  color: whitesmoke;
+  pointer-events: none;
+  text-shadow: 0 1px 10px #c9069c;
+  transition: 0.45s ease;
+}
+
+.theme_barbie .star-1 {
+  top: 15%;
+  left: 20%;
+  font-size: 14px;
+}
+
+.theme_barbie .star-2 {
+  top: 45%;
+  left: 60%;
+  font-size: 10px;
+}
+
+.theme_barbie .star-3 {
+  top: 35%;
+  left: 35%;
+  font-size: 18px;
+}
+
+.theme_barbie .star-4 {
+  top: 60%;
+  left: 45%;
+  font-size: 12px;
+}
+
+.theme_barbie .sparkle_Button:hover .star {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px #ff00c3);
+}
+
+.theme_barbie .sparkle_Button:hover .star-1 {
+  top: -45%;
+  left: -20%;
+}
+
+.theme_barbie .sparkle_Button:hover .star-2 {
+  top: -30%;
+  left: 85%;
+}
+
+.theme_barbie .sparkle_Button:hover .star-3 {
+  top: 90%;
+  left: 105%;
+}
+
+.theme_barbie .sparkle_Button:hover .star-4 {
+  top: 105%;
+  left: 5%;
 }

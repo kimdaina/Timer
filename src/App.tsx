@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './assets/style/Barbie.css';
 
-import Timer from './Timer/Timer'
+import Timer from './Timer/Timer';
 import Theme_name from './Theme/Theme.tsx'; {/*테마 클래스 이름 */}
 
 function App() {
@@ -21,13 +21,9 @@ function App() {
       image : "src/assets/image/Barbie_logo.gif" 
     },
   };
-
-  
-
   return (
     <div  className={theme} >
       <img src={current_theme[theme].image} id='logo'/>
-
       <Timer theme={theme}/>
     </div>
   )

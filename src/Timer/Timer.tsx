@@ -1,6 +1,8 @@
-import { useState,useEffect } from "react";
-import './Timer.css' ; {/*공통으로 들어가야할 테마 */}
+import {Mp3} from '../assets/mp3/Mp3';
 
+import { useState,useEffect } from "react";
+
+import './Timer.css' ; {/*공통으로 들어가야할 테마 */}
 import '../assets/style/Barbie.css'
 
 function Timer({ theme }: { theme: string }){
@@ -13,12 +15,12 @@ function Timer({ theme }: { theme: string }){
     const [totalTime,set_totalTime] = useState(0);
 
     const [started,set_started]=useState(false);
+    const [finish,set_finish] = useState(false);
 
     let hours_num=Number(hours);
     let minutes_num=Number(minutes);
     let seconds_num=Number(seconds);
 
-    
 
     function plus(num:number){ {/* +버튼,숫자증가 */}
         return String(num+1).padStart(2,'0')
@@ -31,6 +33,7 @@ function Timer({ theme }: { theme: string }){
         set_hours("00");
         set_minutes("00");
         set_seconds("00");
+        set_totalTime(0);
         set_started(false);
     }
 
@@ -54,9 +57,11 @@ function Timer({ theme }: { theme: string }){
                         set_hours("00");
                         set_minutes("00");
                         set_seconds("00");
-                        set_totalTime(0);
+
+                        // set_totalTime(0);
+                        set_finish(true);
                         set_started(false);
-                        return 0;
+                        return 0; //이거 자체가 set_total을 0으로 바꾼다
                     }
 
                     
@@ -82,7 +87,7 @@ function Timer({ theme }: { theme: string }){
 
     return(
         <div id="timer_Box" className={theme} >
-            <div id = "All_timeBox">
+            <div id = "All_timeBox" className={!started?"adjust_timeBox":"Hidden_timeBox"}>
                 
                 <div className="time_Box"> {/*시*/}
                     <button className={!started?"adjust_Button":"Hidden_Button"} onClick={()=>set_hours(plus(hours_num))} disabled={started}>+</button>
@@ -132,6 +137,7 @@ function Timer({ theme }: { theme: string }){
                         )}
                     </button>
                 </div>    
+                <Mp3 theme={theme} finish={finish} set_finish={set_finish} />
         </div>
     )
 }

@@ -15,7 +15,7 @@ input::-webkit-outer-spin-button {
 }
 
 #All_timeBox{
-    width: 400px;
+    width: 350px;
     height:200px;
 
     display: flex;

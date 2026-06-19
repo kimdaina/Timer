@@ -9,12 +9,9 @@
 }
 
 .theme_barbie #logo{
-  width: 80px;
+  width: 130px;
   margin: 10px;
 }
-
-
-
 
 
 
@@ -59,7 +56,12 @@
   font-size: 2rem;
 }
 
-.theme_barbie .type_Button{
+.theme_barbie .Hidden_timeBox{
+  border: 3px solid #E305AD;
+  text-align: center;
+}
+
+.theme_barbie .type_Button{ /*reset,, 버튼*/
   border: none;
   border-radius: 5px;
 
@@ -130,4 +132,27 @@
 .theme_barbie .sparkle_Button:hover .star-4 {
   top: 105%;
   left: 5%;
+}
+
+/*----------------------------------------------------*/
+
+/*--------------------MP3 (타이머 끝나면 나오는팝업)--------------------------*/
+.popup_Backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(0 0 0 / 25%);
+  backdrop-filter: blur(4px);
+}
+
+.music_Popup {
+  padding: 24px;
+  background-color: #ffb8e5;
+  border: 3px solid #e305ad;
+  border-radius: 12px;
 }
